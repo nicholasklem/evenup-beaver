@@ -11,7 +11,7 @@
 # === Authors
 #
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
- #
+#
 #
 # === Copyright
 #
