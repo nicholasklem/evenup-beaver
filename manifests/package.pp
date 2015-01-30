@@ -11,7 +11,7 @@
 # === Authors
 #
 # * Justin Lambert <mailto:jlambert@letsevenup.com>
-#
+ #
 #
 # === Copyright
 #
@@ -46,16 +46,15 @@ class beaver::package (
         }
       }
       '6': {
-        if !defined(Package['docutils']) {
-          package {'docutils': }
-        }
-        if !defined(Package['python-pip']) {
-          package {'python-pip': }
-        }
-        exec {'upgrade pip': # hack fordi pip er brukket ved install
-          require => Package['python-pip'],
-          command => '/usr/bin/pip install pip==6.0.6 --upgrade',
-          creates => '/usr/lib/python2.6/site-packages/pip-6.0.6-py2.6.egg-info/installed-files.txt',
+        $beaver_packages = [ "conf_d", "Beaver", "glob2", "redis", "msgpack-pure" ]
+        yumrepo { "ms4el6":
+          baseurl => "http://repo.i.bitbit.net/rhel6/beaver-x86_64/RPMS.beaver",
+          descr => "beaver for el6",
+          enabled => 1,
+          gpgcheck => 0
+        }->
+        # python packages have insane names. redis? you mean python-redis, etc.
+        package { $beaver_packages: }
         }
       }
     }
