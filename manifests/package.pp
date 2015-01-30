@@ -47,14 +47,15 @@ class beaver::package (
       }
       '6': {
         $beaver_packages = [ "conf_d", "Beaver", "glob2", "redis", "msgpack-pure" ]
-        yumrepo { "ms4el6":
+        yumrepo { "beaver":
           baseurl => "http://repo.i.bitbit.net/rhel6/beaver-x86_64/RPMS.beaver",
           descr => "beaver for el6",
           enabled => 1,
           gpgcheck => 0
-        }->
+        }
         # python packages have insane names. redis? you mean python-redis, etc.
-        package { $beaver_packages: }
+        package { $beaver_packages:
+          require => Yumrepo["beaver"];
         }
       }
     }
