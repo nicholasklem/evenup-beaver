@@ -46,9 +46,9 @@ class beaver::package (
         }
       }
       '6': {
-        $beaver_packages = [ "conf_d", "Beaver", "glob2", "redis", "msgpack-pure" ]
+        $beaver_packages = [ "python-conf_d", "python-beaver", "python-glob2", "python-redis", "python-msgpack-pure" ]
         yumrepo { "beaver":
-          baseurl => "http://repo.i.bitbit.net/rhel6/beaver-x86_64/RPMS.beaver",
+          baseurl => "http://repo.i.bitbit.net/ms4/beaver/el6"
           descr => "beaver for el6",
           enabled => 1,
           gpgcheck => 0
