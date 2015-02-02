@@ -52,7 +52,7 @@ class beaver::package (
           descr => "beaver for el6",
           enabled => 1,
           gpgcheck => 0,
-        }->
+        }
         package { $beaver_packages:
           require => Yumrepo["beaver"];
         }
